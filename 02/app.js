@@ -75,4 +75,3 @@ function sum(x, y) {
   }
 console.log(sum(3));
 console.log(sum(3,3));
-
