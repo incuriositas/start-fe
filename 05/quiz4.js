@@ -1,27 +1,28 @@
-var box = document.querySelector('#box');
+const box = document.querySelector('#box');
 
-var new_X = 0;
-var new_Y = 0;
-var cursor_X = 0;
-var cursor_Y = 0; 
+let newX = 0;
+let newY = 0;
+let cursorX = 0;
+let cursorY = 0;
+
+function elementDrag(e) {
+  newX = cursorX - e.clientX;
+  newY = cursorY - e.clientY;
+  cursorX = e.clientX;
+  cursorY = e.clientY;
+  box.style.top = `${box.offsetTop - newY}px`;
+  box.style.left = `${box.offsetLeft - newX}px`;
+}
+function closeDragElement() {
+  document.onmouseup = null;
+  document.onmousemove = null;
+}
 
 function dragMouseDown(e) {
-    cursor_X = e.clientX; 
-    cursor_Y = e.clientY; 
-    document.onmouseup = closeDragElement; 
-    document.onmousemove = elementDrag; 
-} 
-function elementDrag(e) { 
-    new_X = cursor_X - e.clientX;
-    new_Y = cursor_Y - e.clientY;
-    cursor_X = e.clientX;
-    cursor_Y = e.clientY; 
-    box.style.top = (box.offsetTop - new_Y) + "px"; 
-    box.style.left = (box.offsetLeft - new_X) + "px"; 
-} 
-function closeDragElement() { 
-    document.onmouseup = null; 
-    document.onmousemove = null;
-} 
+  cursorX = e.clientX;
+  cursorY = e.clientY;
+  document.onmouseup = closeDragElement;
+  document.onmousemove = elementDrag;
+}
 
 box.addEventListener('mousedown', dragMouseDown);

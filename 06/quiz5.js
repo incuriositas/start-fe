@@ -1,27 +1,27 @@
 const boxes = document.querySelectorAll('.box');
+const offset = { x: 0, y: 0 };
 
-let offset = {x:0, y:0};
-let box_target = null;
+let boxTarget = null;
 
-function mouse_down(event){
-    box_target = event.target;
-    offset.x = box_target.offsetLeft - event.clientX;
-    offset.y = box_target.offsetTop - event.clientY;
+function mouseDown(event) {
+  boxTarget = event.target;
+  offset.x = boxTarget.offsetLeft - event.clientX;
+  offset.y = boxTarget.offsetTop - event.clientY;
 }
 
-function mouse_up(){
-    box_target = null;
+function mouseUp() {
+  boxTarget = null;
 }
 
-function mouse_move(event){
-    if (!box_target) return;
+function mouseMove(event) {
+  if (!boxTarget) return;
 
-    box_target.style.left = event.clientX + offset.x + "px";
-    box_target.style.top = event.clientY + offset.y + "px";
+  boxTarget.style.left = `${event.clientX + offset.x}px`;
+  boxTarget.style.top = `${event.clientY + offset.y}px`;
 }
 
-boxes.forEach(box => {
-    box.addEventListener('mousedown',mouse_down);
-    box.addEventListener('mouseup',mouse_up);
+boxes.forEach((box) => {
+  box.addEventListener('mousedown', mouseDown);
+  box.addEventListener('mouseup', mouseUp);
 });
-document.body.addEventListener('mousemove',mouse_move);
+document.body.addEventListener('mousemove', mouseMove);

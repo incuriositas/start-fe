@@ -1,66 +1,30 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset=utf-8 />
+  <head>
+    <meta charset="utf-8" />
     <title>source</title>
-</head>
-<style>
-    #board{
-        width: 200px;
+  </head>
+  <style>
+    #board {
+      width: 200px;
     }
-    span{
-        float: left;
+    span {
+      float: left;
     }
-    .black{
-        width: 50px;
-        height: 50px;
-        background-color: black;
+    .black {
+      width: 50px;
+      height: 50px;
+      background-color: black;
     }
-    .white{
-        width: 50px;
-        height: 50px;
-        background-color: white;
+    .white {
+      width: 50px;
+      height: 50px;
+      background-color: white;
     }
-</style>
-<body>
+  </style>
+  <body>
+    <div id="board"></div>
 
-<div id="board"></div>
-
-<script>
-    var board = document.querySelector("#board");
-
-    for(var i=0; i<4; i++){
-        for(var j=0; j<4; j++){
-            var span = document.createElement('span');
-            if((i+j)%2 == 1){
-                span.className = "white";
-            }
-            else{
-                span.className = "black";
-            }
-            board.appendChild(span);
-        }
-    }
-
-    var blocks = document.querySelectorAll('#board > span'); 
-    
-    function init(){
-        for (var i = 0; i <16 ; i++){
-            if(blocks[i].style.backgroundColor != blocks[i].className)
-                blocks[i].style.backgroundColor = blocks[i].className
-        }
-    }
-
-    function select(event){
-        init()
-        var block = event.currentTarget;
-        block.style.backgroundColor = 'red';
-    }
-
-    for (var i = 0; i <16 ; i++){
-        blocks[i].addEventListener('click', select);
-    }
-
-</script>
-</body>
+    <script src="quiz2.js"></script>
+  </body>
 </html>

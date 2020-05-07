@@ -1,17 +1,18 @@
-const result = document.getElementById("result");
-const num = document.getElementById("num");
-const result_btn = document.getElementById("btn");
+const result = document.getElementById('result');
+const num = document.getElementById('num');
+const resultBtn = document.getElementById('btn');
 
-function multiplication(number){
-    let result_num = '';
-    if(number.value){
-        for(let i=1; i<10; i++){     
-            result_num = result_num + `${number.value}X${i}=${number.value*i}<br>`;
-        }
-        result.innerHTML = result_num;
-    }else{
-        alert("숫자를 입력해주세요");
+function multiplication(number) {
+  let resultNum = '';
+  if (number.value) {
+    for (let i = 1; i < 10; i += 1) {
+      resultNum = `${resultNum}${number.value}X${i}=${number.value * i}<br>`;
     }
+    result.innerHTML = resultNum;
+  } else {
+    // eslint-disable-next-line no-alert
+    alert('숫자를 입력해주세요');
+  }
 }
 
-result_btn.addEventListener('click', event => multiplication(num));
+resultBtn.addEventListener('click', () => multiplication(num));
